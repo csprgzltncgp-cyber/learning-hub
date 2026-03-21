@@ -32,8 +32,8 @@ export const ResultStep = ({ score, onRestart }: ResultStepProps) => {
           </>
         ) : (
           <>
-            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
-              <XCircle className="h-10 w-10 text-red-500" />
+            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+              <XCircle className="h-10 w-10 text-primary" />
             </div>
             <h2 className="mb-2 text-2xl font-bold text-foreground">
               Bohužiaľ, test ste neabsolvovali úspešne.
