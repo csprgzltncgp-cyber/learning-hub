@@ -61,7 +61,8 @@ export const QuizStep = ({ onComplete, onBack }: QuizStepProps) => {
         </h2>
 
         <RadioGroup
-          value={answers[currentQuestion]?.toString()}
+          key={currentQuestion}
+          value={answers[currentQuestion]?.toString() ?? ""}
           onValueChange={handleAnswer}
           className="space-y-3"
         >
