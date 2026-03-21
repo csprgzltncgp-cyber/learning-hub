@@ -17,8 +17,8 @@ export const ResultStep = ({ score, onRestart }: ResultStepProps) => {
       <CardContent className="flex flex-col items-center py-16 text-center">
         {passed ? (
           <>
-            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
-              <CheckCircle className="h-10 w-10 text-green-600" />
+            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-secondary/10">
+              <CheckCircle className="h-10 w-10 text-secondary" />
             </div>
             <h2 className="mb-2 text-2xl font-bold text-foreground">
               Gratulujeme! Úspešne ste absolvovali test.
