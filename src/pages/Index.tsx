@@ -1,16 +1,63 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import logo from "@/assets/logo.svg";
+import { StepIndicator } from "@/components/StepIndicator";
+import { VideoStep } from "@/components/VideoStep";
+import { PdfStep } from "@/components/PdfStep";
+import { QuizStep } from "@/components/QuizStep";
+import { ResultStep } from "@/components/ResultStep";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [currentStep, setCurrentStep] = useState<"video" | "pdf" | "quiz" | "result">("video");
+  const [score, setScore] = useState(0);
+
+  const handleQuizComplete = (finalScore: number) => {
+    setScore(finalScore);
+    setCurrentStep("result");
+  };
+
+  const handleRestart = () => {
+    setScore(0);
+    setCurrentStep("video");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border bg-card">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <img src={logo} alt="EAP Logo" className="h-10" />
+          <h1 className="text-lg font-bold text-foreground">
+            E-learning – Program EAP
+          </h1>
+        </div>
+      </header>
+
+      {/* Step indicator */}
+      <StepIndicator currentStep={currentStep} />
+
+      {/* Content */}
+      <main className="mx-auto max-w-5xl px-6 py-8">
+        {currentStep === "video" && (
+          <VideoStep onNext={() => setCurrentStep("pdf")} />
+        )}
+        {currentStep === "pdf" && (
+          <PdfStep
+            onNext={() => setCurrentStep("quiz")}
+            onBack={() => setCurrentStep("video")}
+          />
+        )}
+        {currentStep === "quiz" && (
+          <QuizStep
+            onComplete={handleQuizComplete}
+            onBack={() => setCurrentStep("pdf")}
+          />
+        )}
+        {currentStep === "result" && (
+          <ResultStep score={score} onRestart={handleRestart} />
+        )}
+      </main>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
