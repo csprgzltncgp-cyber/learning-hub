@@ -25,7 +25,7 @@ const Index = () => {
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-5xl items-center justify-center px-6 py-4">
-          <img src={logo} alt="EAP Logo" className="h-28" />
+          <img src={logo} alt="EAP Logo" className="h-36" />
         </div>
       </header>
 
