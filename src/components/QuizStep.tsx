@@ -82,16 +82,17 @@ export const QuizStep = ({ onComplete, onBack }: QuizStepProps) => {
           ))}
         </RadioGroup>
 
-        <div className="flex items-center justify-between pt-4">
-          <div className="flex gap-2">
+        <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
             {currentQuestion === 0 ? (
-              <Button variant="outline" onClick={onBack}>
+              <Button variant="outline" onClick={onBack} className="w-full sm:w-auto">
                 ← Späť na prezentáciu
               </Button>
             ) : (
               <Button
                 variant="outline"
                 onClick={() => setCurrentQuestion((p) => p - 1)}
+                className="w-full sm:w-auto"
               >
                 <ChevronLeft className="mr-1 h-4 w-4" />
                 Predchádzajúca
@@ -99,11 +100,11 @@ export const QuizStep = ({ onComplete, onBack }: QuizStepProps) => {
             )}
           </div>
 
-          <div className="flex gap-2">
+          <div>
             {currentQuestion < totalQuestions - 1 ? (
               <Button
                 onClick={() => setCurrentQuestion((p) => p + 1)}
-                className="bg-primary hover:bg-primary/90"
+                className="w-full sm:w-auto bg-primary hover:bg-primary/90"
               >
                 Nasledujúca
                 <ChevronRight className="ml-1 h-4 w-4" />
@@ -112,7 +113,7 @@ export const QuizStep = ({ onComplete, onBack }: QuizStepProps) => {
               <Button
                 onClick={handleSubmit}
                 disabled={!allAnswered}
-                className="bg-secondary hover:bg-secondary/90"
+                className="w-full sm:w-auto bg-secondary hover:bg-secondary/90"
               >
                 Odoslať test ({answeredCount}/{totalQuestions})
               </Button>
