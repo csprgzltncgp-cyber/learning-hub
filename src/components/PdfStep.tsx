@@ -52,23 +52,25 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
           </Document>
 
           {numPages > 0 && (
-            <div className="mt-4 flex items-center gap-4">
+            <div className="mt-4 flex items-center gap-6">
               <Button
                 variant="outline"
-                size="sm"
+                size="icon"
                 onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
                 disabled={pageNumber <= 1}
+                className="h-10 w-10 shrink-0"
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
                 {pageNumber} / {numPages}
               </span>
               <Button
                 variant="outline"
-                size="sm"
+                size="icon"
                 onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
                 disabled={pageNumber >= numPages}
+                className="h-10 w-10 shrink-0"
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
