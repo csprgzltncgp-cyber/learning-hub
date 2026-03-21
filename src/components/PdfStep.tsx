@@ -35,7 +35,7 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
       <CardContent className="space-y-4">
         <div className="flex flex-col items-center overflow-hidden rounded-lg border border-border bg-muted/30 p-4">
           <Document
-            file="/EAP Orientation w SK.pdf"
+            file="/EAP-Orientation-w-SK.pdf"
             onLoadSuccess={onDocumentLoadSuccess}
             loading={
               <div className="flex h-[500px] items-center justify-center text-muted-foreground">
