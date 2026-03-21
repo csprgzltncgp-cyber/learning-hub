@@ -24,11 +24,8 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <img src={logo} alt="EAP Logo" className="h-10" />
-          <h1 className="text-lg font-bold text-foreground">
-            E-learning – Program EAP
-          </h1>
+        <div className="mx-auto flex max-w-5xl items-center justify-center px-6 py-4">
+          <img src={logo} alt="EAP Logo" className="h-28" />
         </div>
       </header>
 
