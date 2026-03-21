@@ -82,7 +82,7 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
               ← Späť
             </Button>
             <a
-              href="/EAP Orientation w SK.pdf"
+              href="/EAP-Orientation-w-SK.pdf"
               download
               className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
             >
