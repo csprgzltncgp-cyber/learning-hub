@@ -1,6 +1,12 @@
+import { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Download } from "lucide-react";
+import { FileText, Download, ChevronLeft, ChevronRight } from "lucide-react";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 interface PdfStepProps {
   onNext: () => void;
@@ -8,6 +14,13 @@ interface PdfStepProps {
 }
 
 export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
+  const [numPages, setNumPages] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+  };
+
   return (
     <Card className="border-border">
       <CardHeader>
@@ -19,14 +32,50 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
           Prečítajte si prezentáciu o programe EAP. Keď budete pripravení, pokračujte na test.
         </p>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="overflow-hidden rounded-lg border border-border">
-          <iframe
-            src="/EAP Orientation w SK.pdf"
-            className="h-[600px] w-full"
-            title="EAP Prezentácia"
-          />
+      <CardContent className="space-y-4">
+        <div className="flex flex-col items-center overflow-hidden rounded-lg border border-border bg-muted/30 p-4">
+          <Document
+            file="/EAP Orientation w SK.pdf"
+            onLoadSuccess={onDocumentLoadSuccess}
+            loading={
+              <div className="flex h-[500px] items-center justify-center text-muted-foreground">
+                Načítavanie prezentácie...
+              </div>
+            }
+          >
+            <Page
+              pageNumber={pageNumber}
+              width={Math.min(800, window.innerWidth - 80)}
+              renderTextLayer
+              renderAnnotationLayer
+            />
+          </Document>
+
+          {numPages > 0 && (
+            <div className="mt-4 flex items-center gap-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
+                disabled={pageNumber <= 1}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                {pageNumber} / {numPages}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
+                disabled={pageNumber >= numPages}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
         </div>
+
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
             <Button variant="outline" onClick={onBack}>
