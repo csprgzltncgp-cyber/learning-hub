@@ -28,8 +28,8 @@ export const VideoStep = ({ onNext }: VideoStepProps) => {
             Váš prehliadač nepodporuje prehrávanie videa.
           </video>
         </div>
-        <div className="flex justify-end">
-          <Button onClick={onNext} className="bg-primary hover:bg-primary/90">
+        <div className="flex justify-center sm:justify-end">
+          <Button onClick={onNext} className="w-full sm:w-auto bg-primary hover:bg-primary/90">
             Pokračovať na prezentáciu →
           </Button>
         </div>
