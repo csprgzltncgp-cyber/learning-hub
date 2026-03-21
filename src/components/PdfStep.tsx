@@ -78,21 +78,21 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={onBack}>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button variant="outline" onClick={onBack} className="w-full sm:w-auto">
               ← Späť
             </Button>
             <a
               href="/EAP-Orientation-w-SK.pdf"
               download
-              className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground sm:w-auto"
             >
               <Download className="h-4 w-4" />
               Stiahnuť PDF
             </a>
           </div>
-          <Button onClick={onNext} className="bg-primary hover:bg-primary/90">
+          <Button onClick={onNext} className="w-full bg-primary hover:bg-primary/90 sm:w-auto">
             Pokračovať na test →
           </Button>
         </div>
