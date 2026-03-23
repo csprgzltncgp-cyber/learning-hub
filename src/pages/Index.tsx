@@ -36,8 +36,17 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-5xl items-center justify-center px-6 py-4">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <div />
           <img src={logo} alt="EAP Logo" className="h-36" />
+          <a
+            href="/EAP-elearning-SCORM.zip"
+            download
+            className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            <Download className="h-3.5 w-3.5" />
+            SCORM
+          </a>
         </div>
       </header>
 
