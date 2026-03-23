@@ -4,6 +4,7 @@ import { StepIndicator } from "@/components/StepIndicator";
 import { VideoStep } from "@/components/VideoStep";
 import { PdfStep } from "@/components/PdfStep";
 import { QuizStep } from "@/components/QuizStep";
+import { Download } from "lucide-react";
 import { ResultStep } from "@/components/ResultStep";
 import { scormInit, scormSetScore, scormSetStatus, scormFinish } from "@/lib/scorm";
 import { quizQuestions } from "@/data/quizData";
