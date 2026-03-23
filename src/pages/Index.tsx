@@ -1,17 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "@/assets/logo.svg";
 import { StepIndicator } from "@/components/StepIndicator";
 import { VideoStep } from "@/components/VideoStep";
 import { PdfStep } from "@/components/PdfStep";
 import { QuizStep } from "@/components/QuizStep";
 import { ResultStep } from "@/components/ResultStep";
+import { scormInit, scormSetScore, scormSetStatus, scormFinish } from "@/lib/scorm";
+import { quizQuestions } from "@/data/quizData";
+import { PASS_THRESHOLD } from "@/data/quizData";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<"video" | "pdf" | "quiz" | "result">("video");
   const [score, setScore] = useState(0);
 
+  useEffect(() => {
+    scormInit();
+    return () => { scormFinish(); };
+  }, []);
+
   const handleQuizComplete = (finalScore: number) => {
     setScore(finalScore);
+    const passed = finalScore >= PASS_THRESHOLD;
+    scormSetScore(finalScore, quizQuestions.length);
+    scormSetStatus(passed);
     setCurrentStep("result");
   };
 
