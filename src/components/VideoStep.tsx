@@ -23,7 +23,7 @@ export const VideoStep = ({ onNext }: VideoStepProps) => {
           <video
             controls
             className="aspect-video w-full"
-            src="/EAP-Orientation-w-SK.mp4"
+            src={`${import.meta.env.BASE_URL}EAP-Orientation-w-SK.mp4`}
           >
             Váš prehliadač nepodporuje prehrávanie videa.
           </video>
