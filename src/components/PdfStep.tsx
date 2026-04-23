@@ -35,7 +35,7 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
       <CardContent className="space-y-4">
         <div className="flex flex-col items-center overflow-hidden rounded-lg border border-border bg-muted/30 p-4">
           <Document
-            file="/EAP-Orientation-w-SK.pdf"
+            file={`${import.meta.env.BASE_URL}EAP-Orientation-w-SK.pdf`}
             onLoadSuccess={onDocumentLoadSuccess}
             loading={
               <div className="flex h-[500px] items-center justify-center text-muted-foreground">
@@ -84,7 +84,7 @@ export const PdfStep = ({ onNext, onBack }: PdfStepProps) => {
               ← Späť
             </Button>
             <a
-              href="/EAP-Orientation-w-SK.pdf"
+              href={`${import.meta.env.BASE_URL}EAP-Orientation-w-SK.pdf`}
               download
               className="inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground sm:w-auto"
             >

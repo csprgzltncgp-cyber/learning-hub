@@ -40,7 +40,7 @@ const Index = () => {
           <div />
           <img src={logo} alt="EAP Logo" className="h-36" />
           <a
-            href="/EAP-elearning-SCORM.zip"
+            href={`${import.meta.env.BASE_URL}EAP-elearning-SCORM.zip`}
             download
             className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           >
